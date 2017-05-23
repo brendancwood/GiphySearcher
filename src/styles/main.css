@@ -1,0 +1,38 @@
+.gif-container {
+  line-height: 0;
+  -webkit-column-count: 5;
+  -webkit-column-gap: 0px;
+  -moz-column-count: 5;
+  -moz-column-gap: 0px;
+  column-count: 5;
+  column-gap: 10px;
+}
+
+.gif-container img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 1200px) {
+  .gif-container {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 1000px) {
+  .gif-container {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 800px) {
+  .gif-container {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 400px) {
+  .gif-container {
+    column-count: 1;
+  }
+}
