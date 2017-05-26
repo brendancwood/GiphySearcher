@@ -1,12 +1,10 @@
-# `create-react-app` ... with Redux
+# Giphy Searcher
 
-This is a barebones implementation of Redux with a React app that was generated with `create-react-app`, and then ejected with `npm run eject`.
+This is a simple project to use the giphy API to be able to find trending gifs
+and search for gifs.  Built on top of an ejected create-react-app with Redux ontop, with
+support for Redux devtools.
 
-:bulb: This repository consists of two commits and only two commits.  
+- `npm install`
+- `npm start`
 
- 1. **first commit** is the base code of a `create-react-app` app source code after eject (`npm run eject`)
- 2. **second commit** are the sample additions to implement basic redux
-
-:bulb: :bulb: It is worth noting that it is **not** required to run `npm run eject` in order to get Redux implemented in this app.  Implementing Redux in the app without ejecting is completely possible
-
-![demo](images/demo.gif)
+![demo](images/screenshot.png)
