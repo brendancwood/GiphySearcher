@@ -1,0 +1,4 @@
+export const APP_MODES = {
+  'TRENDING': 'TRENDING',
+  'SEARCHING': 'SEARCHING'
+}

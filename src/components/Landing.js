@@ -1,9 +1,10 @@
 import React, {PropTypes, Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import * as giphyActions from '../actions/giphy-actions'
+import * as giphyActions from '../actions/giphy_actions'
 import GifList from './GifList'
 import SearchInput from './SearchInput'
+import { APP_MODES } from '../utils/constants'
 
 class LandingContainer extends Component {
   componentDidMount() {
@@ -14,26 +15,28 @@ class LandingContainer extends Component {
   }
 
   render() {
-    if (!this.props.giphy.isLoading) {
-      return <div>Loading...</div>
-    }
-
+    console.log(this.props)
+    const data = this.props.app_state.mode === APP_MODES.TRENDING ?
+      this.props.trending.data : this.props.search[this.props.search.currentTerm]
+    console.log('data', data)
     return (
       <div>
         <SearchInput onSearch={this.props.actions.searchGiphy} />
-        <GifList gifs={this.props.giphy.gifs.trending.data} />
+        <GifList showLoader={this.props.app_state.isLoading} gifs={data.data} />
       </div>
     )
   }
 }
 
 LandingContainer.propTypes = {
-  giphy: PropTypes.object.isRequired,
+  app_state: PropTypes.object.isRequired,
+  trending : PropTypes.object.isRequired,
+  search   : PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
 
-function mapStateToProps({giphy}) {
-  return {giphy}
+function mapStateToProps({app_state, trending, search}) {
+  return {app_state, trending, search}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -43,3 +46,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingContainer)
+

@@ -1,5 +1,5 @@
 import api from '../utils/api'
-import * as types from './action-types'
+import * as types from './action_types'
 
 export const receiveSearch = (data) => {
   return {
@@ -11,7 +11,7 @@ export const receiveSearch = (data) => {
 export const requestSearch = (term) => {
   return {
     type: types.REQUEST_SEARCH,
-    term
+    payload: term
   }
 }
 
@@ -43,6 +43,7 @@ export function getTrending() {
   return dispatch => {
     dispatch(requestTrending())
     return api.instance.get(api.prepareUrl(api.urls.trending)).then(response => {
+      console.log(response)
       dispatch(receiveTrending(response.data))
     })
   }
