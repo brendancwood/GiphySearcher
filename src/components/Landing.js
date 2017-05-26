@@ -11,9 +11,6 @@ class LandingContainer extends Component {
     this.props.actions.getTrending()
   }
 
-  componentWillUnmount() {
-  }
-
   render() {
     const data = this.props.app_state.mode === APP_MODES.TRENDING ?
       this.props.trending.data : this.props.search[this.props.search.currentTerm]
