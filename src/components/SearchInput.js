@@ -29,16 +29,20 @@ class SearchInput extends Component {
 
   render() {
     return (
-      <div className="input-group text-center">
-        <input
-          className="form-control"
-          type="text"
-          value={this.state.term}
-          onKeyPress={this.handleKeyPress}
-          onChange={this.inputHandler} placeholder="Search Giphy..." />
-        <span className="input-group-btn">
-          <button className="btn btn-secondary" type="button" onClick={this.onSearch}>Search</button>
-        </span>
+        <div className="row search-bar">
+          <div className="col-lg-6 offset-lg-3 col-md-12">
+            <div className="input-group">
+              <input
+                className="form-control"
+                type="text"
+                value={this.state.term}
+                onKeyPress={this.handleKeyPress}
+                onChange={this.inputHandler} placeholder="Search Giphy..." />
+              <span className="input-group-btn">
+                <button className="btn btn-secondary" type="button" onClick={this.onSearch}>Search</button>
+              </span>
+            </div>
+        </div>
       </div>
     )
   }

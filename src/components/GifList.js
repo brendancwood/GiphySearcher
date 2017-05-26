@@ -6,10 +6,10 @@ import Loader from './Loader'
 const GifList = ({gifs, showLoader}) => {
   return (
     <div className="gif-container">
-    <Loader showLoader={showLoader} />
-      {gifs.map((gif) =>
-        <Gif key={gif.id} gif={gif} />
-      )}
+      <Loader showLoader={showLoader} />
+        {gifs.map((gif) =>
+          <Gif key={gif.id} gif={gif} />
+        )}
     </div>
   )
 }

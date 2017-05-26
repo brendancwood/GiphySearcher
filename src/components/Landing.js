@@ -15,10 +15,9 @@ class LandingContainer extends Component {
   }
 
   render() {
-    console.log(this.props)
     const data = this.props.app_state.mode === APP_MODES.TRENDING ?
       this.props.trending.data : this.props.search[this.props.search.currentTerm]
-    console.log('data', data)
+
     return (
       <div>
         <SearchInput onSearch={this.props.actions.searchGiphy} />
