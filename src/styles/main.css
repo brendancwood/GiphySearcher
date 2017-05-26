@@ -3,7 +3,7 @@
 }
 
 .gif-container {
-  line-height: 150px;
+  line-height: 100px;
   column-count: 5;
   column-gap: 20px;
   margin-left: 15px;
@@ -43,8 +43,8 @@
   background-image: url('~/images/loader.gif');
   background-repeat: repeat-x;
   background-position: 50% 50%;
-  min-width: 100px;
-  min-height: 100px;
+  min-width: 50px;
+  min-height: 50px;
   border: none;
   border-radius: 3px;
   box-shadow: 0 0 1px black;
