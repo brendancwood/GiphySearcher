@@ -26,29 +26,29 @@ class Gif extends Component {
   }
 
   render() {
-    // const gif = this.props
+    const gif = this.props.gif
 
     return (
       <div className="gif-box" onClick={this.handleClick}>
-        <img role="presentation" className="img-fluid gif-image" src={this.props.gif.images.fixed_height_downsampled.url} />
+        <img role="presentation" className="img-fluid gif-image" src={gif.images.fixed_height_downsampled.url} />
         {
           this.state.isShowingModal &&
           <ModalContainer onClose={this.handleClose}>
             <ModalDialog onClose={this.handleClose}>
 
-              <img role="presentation" className="img-fluid gif-image push-bottom-20" src={this.props.gif.images.fixed_height_downsampled.url} />
+              <img role="presentation" className="img-fluid gif-image push-bottom-20" src={gif.images.fixed_height_downsampled.url} />
 
               {this.props.gif.user &&
                 <div>
-                  <p><img className="profile-url" role="presentation" src={this.props.gif.user.avatar_url} />{this.props.gif.user.username}</p>
+                  <p><img className="profile-url" role="presentation" src={gif.user.avatar_url} />{gif.user.username}</p>
                 </div>
               }
-              <p>Rating: {this.props.gif.rating}</p>
-              <p>Uploaded: {this.formatDate(this.props.gif.import_datetime)}</p>
+              <p>Rating: {gif.rating}</p>
+              <p>Uploaded: {this.formatDate(gif.import_datetime)}</p>
 
               {
-                parseInt(this.props.gif.trending_datetime.substring(0,1), 10) !== 0 &&
-                <p>Trended On: {this.formatDate(this.props.gif.trending_datetime)}</p>
+                parseInt(gif.trending_datetime.substring(0,1), 10) !== 0 &&
+                <p>Trended On: {this.formatDate(gif.trending_datetime)}</p>
               }
 
             </ModalDialog>

@@ -43,7 +43,6 @@ export function getTrending() {
   return dispatch => {
     dispatch(requestTrending())
     return api.instance.get(api.prepareUrl(api.urls.trending)).then(response => {
-      console.log(response)
       dispatch(receiveTrending(response.data))
     })
   }
