@@ -41,6 +41,9 @@ class SearchInput extends Component {
               <span className="input-group-btn">
                 <button className="btn btn-secondary" type="button" onClick={this.onSearch}>Search</button>
               </span>
+              <span className="input-group-btn">
+                <button className="btn btn-info" type="button" onClick={this.props.onUploadClick}>Upload</button>
+              </span>
             </div>
         </div>
       </div>
