@@ -4,18 +4,12 @@ import {bindActionCreators} from 'redux'
 import * as giphyActions from '../actions/giphy_actions'
 import GifList from './GifList'
 import SearchInput from './SearchInput'
-import UploadForm from './UploadForm'
-import { ModalContainer, ModalDialog } from 'react-modal-dialog';
 import { APP_MODES } from '../utils/constants'
 
 class LandingContainer extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {isShowingModal: false}
-
-    this.showModalClick = this.showModalClick.bind(this)
-    this.handleClose = this.handleClose.bind(this)
     this.uploadGif = this.uploadGif.bind(this)
   }
 
@@ -23,16 +17,7 @@ class LandingContainer extends Component {
     this.props.actions.getTrending()
   }
 
-  showModalClick() {
-    this.setState({isShowingModal: true})
-  }
-
-  handleClose() {
-    this.setState({isShowingModal: false})
-  }
-
   uploadGif(file) {
-    this.setState({isShowingModal: false})
     this.props.actions.uploadGif(file)
   }
 
@@ -42,16 +27,8 @@ class LandingContainer extends Component {
 
     return (
       <div>
-        <SearchInput onSearch={this.props.actions.searchGiphy} onUploadClick={this.showModalClick} />
+        <SearchInput onSearch={this.props.actions.searchGiphy} onUpload={this.uploadGif} />
         <GifList showLoader={this.props.app_state.isLoading} gifs={data.data} />
-        {
-          this.state.isShowingModal &&
-          <ModalContainer onClose={this.handleClose}>
-            <ModalDialog onClose={this.handleClose}>
-              <UploadForm onSubmit={this.uploadGif} />
-            </ModalDialog>
-          </ModalContainer>
-        }
       </div>
     )
   }

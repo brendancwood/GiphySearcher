@@ -1,14 +1,28 @@
 import React, {PropTypes, Component} from 'react'
+import { ModalContainer, ModalDialog } from 'react-modal-dialog';
+import UploadForm from './UploadForm'
+
 
 class SearchInput extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {term: ''}
+    this.state = {term: '', isShowingModal: false}
 
     this.inputHandler = this.inputHandler.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.onSearch = this.onSearch.bind(this)
+    this.showModalClick = this.showModalClick.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+    this.uploadGif = this.uploadGif.bind(this)
+  }
+
+  closeModal() {
+    this.setState({isShowingModal: false})
+  }
+
+  showModalClick() {
+    this.setState({isShowingModal: true})
   }
 
   onSearch() {
@@ -18,6 +32,11 @@ class SearchInput extends Component {
 
   inputHandler(e) {
     this.setState({term: e.target.value})
+  }
+
+  uploadGif(file) {
+    this.props.onUpload(file)
+    this.setState({isShowingModal: false})
   }
 
   handleKeyPress(e) {
@@ -42,10 +61,18 @@ class SearchInput extends Component {
                 <button className="btn btn-secondary" type="button" onClick={this.onSearch}>Search</button>
               </span>
               <span className="input-group-btn">
-                <button className="btn btn-info" type="button" onClick={this.props.onUploadClick}>Upload</button>
+                <button className="btn btn-info" type="button" onClick={this.showModalClick}>Upload</button>
               </span>
             </div>
         </div>
+        {
+          this.state.isShowingModal &&
+          <ModalContainer onClose={this.closeModal}>
+            <ModalDialog onClose={this.closeModal}>
+              <UploadForm onSubmit={this.uploadGif} />
+            </ModalDialog>
+          </ModalContainer>
+        }
       </div>
     )
   }

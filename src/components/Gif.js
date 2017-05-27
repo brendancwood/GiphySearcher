@@ -36,7 +36,7 @@ class Gif extends Component {
           <ModalContainer onClose={this.handleClose}>
             <ModalDialog onClose={this.handleClose}>
 
-              <img role="presentation" className="img-fluid gif-image push-bottom-20" src={gif.images.fixed_height_downsampled.url} />
+              <img role="presentation" className="gif-image push-bottom-20" src={gif.images.fixed_height_downsampled.url} />
 
               {this.props.gif.user &&
                 <div>

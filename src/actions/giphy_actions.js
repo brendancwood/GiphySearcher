@@ -61,13 +61,14 @@ const uploadSuccess = () => {
 }
 
 export function uploadGif(file) {
+
   const data = {
     // 'username': 'brendancwood87',
     file: file.name,
     api_key: PUBLIC_KEY,
     tags: 'cat,pink,catbrush'
   }
-
+  // not necessary if not on localhost
   // const config = {
   //   // withCredentials: true,
   //     headers: {
@@ -85,7 +86,7 @@ export function uploadGif(file) {
       dispatch(uploadSuccess(response.data))
     })
     .catch(response => {
-      console.log('failed')
+      console.log('failed, response=', response)
     })
   }
 }

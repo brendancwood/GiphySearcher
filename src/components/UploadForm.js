@@ -36,14 +36,19 @@ class UploadForm extends Component {
 
   render() {
     if (!this.state.file) {
-      return (<input type="file" accept="image/gif" onChange={this.handleUpload} />)
+      return (
+        <label className="custom-file">
+          <input type="file" accept="image/gif" onChange={this.handleUpload} />
+          <span className="custom-file-control"></span>
+        </label>
+      )
     } else {
       return (
         <div>
           <img role="presentation" id="uploaded-file" className="push-bottom-20" src="" />
           <div className="push-top-20 text-center">
-            <button className="btn btn-danger push-right-20" onClick={this.cancel}>Cancel</button>
-            <button disabled={!this.state.file} className="btn btn-success" onClick={this.submit}>Upload Gif</button>
+            <button className="btn btn-danger push-right-20 pointer" onClick={this.cancel}>Cancel</button>
+            <button disabled={!this.state.file} className="btn btn-success pointer" onClick={this.submit}>Upload Gif</button>
           </div>
         </div>
       )
