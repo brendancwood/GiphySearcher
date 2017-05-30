@@ -85,7 +85,6 @@ export function uploadGif(file) {
     dispatch(uploadingGif())
     return axios.post(api.urls.upload, formData)
     .then(response => {
-      console.log(response)
       if (response.data.meta.status === 200) {
         dispatch(uploadSuccess(response.data))
       } else {
