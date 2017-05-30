@@ -2,7 +2,6 @@ import React, {PropTypes, Component} from 'react'
 import { ModalContainer, ModalDialog } from 'react-modal-dialog';
 import UploadForm from './UploadForm'
 
-
 class SearchInput extends Component {
   constructor(props) {
     super(props)

@@ -2,6 +2,7 @@ import api, { PUBLIC_KEY } from '../utils/api'
 import * as types from './action_types'
 import axios from 'axios'
 
+// SEARCHING
 const receiveSearch = (data) => {
   return {
     type: types.RECEIVE_SEARCH,
@@ -25,6 +26,7 @@ export function searchGiphy(term) {
   }
 }
 
+// TRENDING
 const receiveTrending = (data) => {
   return {
     type: types.RECEIVE_TRENDING,
@@ -47,6 +49,12 @@ export function getTrending() {
   }
 }
 
+// UPLOADING
+export const uploadReset = () => {
+  return {
+    type: types.UPLOAD_RESET
+  }
+}
 
 const uploadingGif = () => {
   return {
@@ -54,39 +62,35 @@ const uploadingGif = () => {
   }
 }
 
-const uploadSuccess = () => {
+const uploadSuccess = (data) => {
   return {
-    type: types.UPLOAD_SUCCESS
+    type: types.UPLOAD_SUCCESS,
+    payload: data
+  }
+}
+
+const uploadFailed = (data) => {
+  return {
+    type: types.UPLOAD_FAILED,
+    payload: data
   }
 }
 
 export function uploadGif(file) {
+  const formData = new FormData()
+  formData.append('file', file)
+  formData.append('api_key', PUBLIC_KEY)
 
-  const data = {
-    // 'username': 'brendancwood87',
-    file: file.name,
-    api_key: PUBLIC_KEY,
-    tags: 'cat,pink,catbrush'
-  }
-  // not necessary if not on localhost
-  // const config = {
-  //   // withCredentials: true,
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json',
-  //       'Access-Control-Allow-Credentials': true,
-  //       'Access-Control-Allow-Headers': 'Content-Type, Accept, x-requested-with, cache-control',
-  //       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  //       'Access-Control-Allow-Origin': '*'
-  //   }
-  // }
   return dispatch => {
     dispatch(uploadingGif())
-    return axios.post(api.urls.upload, data).then(response => {
-      dispatch(uploadSuccess(response.data))
-    })
-    .catch(response => {
-      console.log('failed, response=', response)
+    return axios.post(api.urls.upload, formData)
+    .then(response => {
+      console.log(response)
+      if (response.data.meta.status === 200) {
+        dispatch(uploadSuccess(response.data))
+      } else {
+        dispatch(uploadFailed(response.data))
+      }
     })
   }
 }

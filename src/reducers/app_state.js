@@ -3,7 +3,7 @@ import { APP_MODES } from '../utils/constants'
 
 const initialState = {
   isLoading: false,
-  mode: APP_MODES.TRENDING
+  mode: APP_MODES.TRENDING,
 }
 
 export default (state = initialState, action) => {

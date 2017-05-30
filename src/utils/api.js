@@ -12,7 +12,8 @@ class API {
     this.urls = {
       'search': 'search?q=',
       'trending': 'trending?',
-      'upload'  : 'http://upload.giphy.com/v1/gifs'
+      'upload': 'http://upload.giphy.com/v1/gifs',
+      'giphy': 'https://giphy.com/gifs/'
     }
   }
 
