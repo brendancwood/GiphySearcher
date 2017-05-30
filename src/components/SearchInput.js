@@ -67,7 +67,7 @@ class SearchInput extends Component {
         {
           this.state.isShowingModal &&
           <ModalContainer onClose={this.closeModal}>
-            <ModalDialog onClose={this.closeModal}>
+            <ModalDialog style={{top: '20%'}} onClose={this.closeModal}>
               <UploadForm onSubmit={this.uploadGif} />
             </ModalDialog>
           </ModalContainer>
