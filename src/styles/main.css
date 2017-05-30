@@ -77,14 +77,16 @@
   right: 0;
   top: 0;
   bottom: 0;
+  background-color: rgb(24, 39, 56);
+  opacity: 0.2;
 }
 
 .sk-fading-circle {
   width: 100px;
   height: 100px;
   position: relative;
-  top: 50%;
-  left: 50%;
+  top: 30%;
+  margin: auto;
 }
 
 .sk-fading-circle .sk-circle {
@@ -101,7 +103,7 @@
   margin: 0 auto;
   width: 15%;
   height: 15%;
-  background-color: black;
+  background-color: white;
   border-radius: 100%;
   animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
 }
