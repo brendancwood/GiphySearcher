@@ -7,4 +7,6 @@ support for Redux devtools.
 - `npm install`
 - `npm start`
 
+- included in the images folder is a corrupted gif (for the upload to fail) and a good_cat gif which you can upload to giphy.
+
 ![demo](images/screenshot.png)
