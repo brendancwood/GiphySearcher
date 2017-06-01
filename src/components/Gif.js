@@ -29,8 +29,8 @@ class Gif extends Component {
     const gif = this.props.gif
 
     return (
-      <div className="gif-box" onClick={this.handleClick}>
-        <img role="presentation" className="img-fluid gif-image" src={gif.images.downsized_large.url} />
+      <div className="gif-box col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <img role="presentation" onClick={this.handleClick} className="img-fluid gif-image" src={gif.images.fixed_height_downsampled.url} />
         {
           this.state.isShowingModal &&
           <ModalContainer onClose={this.handleClose}>
