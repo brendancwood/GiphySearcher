@@ -2,7 +2,7 @@ import * as types from '../actions/action_types'
 import { APP_MODES } from '../utils/constants'
 
 const initialState = {
-  isLoading: false,
+  isLoading: true,
   mode: APP_MODES.TRENDING,
 }
 

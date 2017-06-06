@@ -16,9 +16,12 @@ export default (state = initialState, action) => {
       if (!action.payload.currentTerm) {
         return state
       } else {
-          return {...state, [state.currentTerm]: {
-              data: [...state.currentTerm.data.data, ...action.payload.data.data],
-              pagination: state.currentTerm.data.pagination
+          const currentTerm = action.payload.currentTerm
+          const newArray = [...state[currentTerm].data, ...action.payload.data.data]
+          const newPagination = action.payload.data.pagination
+          return {...state, [currentTerm]: {
+              data: newArray,
+              pagination: newPagination
             }
           }
         }

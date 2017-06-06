@@ -9,9 +9,14 @@ const InfiniteScroller = ({isLoading, onScroll, paginationData}) => {
 
   return (
     <div>
-      <Waypoint onEnter={onScroll(paginationData)}>
+      <Waypoint key={'foo'} onEnter={({previousPosition, currentPosition, event}) => {
+        if (currentPosition === 'inside') {
+          onScroll(paginationData)
+        }
+        }
+      }>
         <div>
-          Some content here ----------------------
+          Scrolling ----------------------
         </div>
       </Waypoint>
     </div>
