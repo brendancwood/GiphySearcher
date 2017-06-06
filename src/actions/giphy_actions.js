@@ -93,3 +93,38 @@ export function uploadGif(file) {
     })
   }
 }
+
+
+// PAGINATION
+export function receiveNextPage(currentTerm, data) {
+  return {
+    type: types.RECEIVE_NEXT_PAGE,
+    payload: {
+      currentTerm,
+      data
+    }
+  }
+}
+
+export function getNextPage(currentTerm, paginationData) {
+  if (paginationData.offset > 20) {
+    return {
+      type: 'RETURNING'
+    }
+  }
+
+  let querystring = `&offset=${paginationData.offset+10}`
+  return dispatch => {
+    if (!currentTerm) {
+      return api.instance.get(api.prepareUrl(api.urls.trending, querystring)).then(response => {
+        debugger
+        dispatch(receiveNextPage(currentTerm, response.data))
+      })
+    } else {
+      querystring = currentTerm + querystring
+      return api.instance.get(api.prepareUrl(api.urls.search, currentTerm)).then(response => {
+        dispatch(receiveNextPage(currentTerm, response.data))
+      })
+    }
+  }
+}

@@ -11,6 +11,17 @@ export default (state = initialState, action) => {
       return {...state, currentTerm: currentTerm, [currentTerm]: {data: []}}
     case types.RECEIVE_SEARCH:
       return {...state, [state.currentTerm]: action.payload}
+
+    case types.RECEIVE_NEXT_PAGE:
+      if (!action.payload.currentTerm) {
+        return state
+      } else {
+          return {...state, [state.currentTerm]: {
+              data: [...state.currentTerm.data.data, ...action.payload.data.data],
+              pagination: state.currentTerm.data.pagination
+            }
+          }
+        }
     default:
       return state
   }
