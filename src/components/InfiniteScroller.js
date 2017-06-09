@@ -15,9 +15,7 @@ const InfiniteScroller = ({isLoading, onScroll, paginationData}) => {
         }
         }
       }>
-        <div>
-          Scrolling ----------------------
-        </div>
+        <div></div>
       </Waypoint>
     </div>
   )
