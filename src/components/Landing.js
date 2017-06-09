@@ -5,6 +5,7 @@ import * as giphyActions from '../actions/giphy_actions'
 import GifList from './GifList'
 import SearchInput from './SearchInput'
 import UploadBanner from './UploadBanner'
+import InfiniteScroller from './InfiniteScroller'
 import { APP_MODES } from '../utils/constants'
 
 class LandingContainer extends Component {
@@ -12,6 +13,7 @@ class LandingContainer extends Component {
     super(props)
 
     this.uploadGif = this.uploadGif.bind(this)
+    this.handleScroll = this.handleScroll.bind(this)
   }
 
   componentDidMount() {
@@ -20,6 +22,12 @@ class LandingContainer extends Component {
 
   uploadGif(file) {
     this.props.actions.uploadGif(file)
+  }
+
+  handleScroll(paginationData) {
+    if (this.props.search.currentTerm == null && paginationData == null) return;
+
+    this.props.actions.getNextPage(this.props.search.currentTerm, paginationData)
   }
 
   render() {
@@ -31,6 +39,10 @@ class LandingContainer extends Component {
         <UploadBanner uploadData={this.props.uploads} />
         <SearchInput onSearch={this.props.actions.searchGiphy} onUpload={this.uploadGif} />
         <GifList showLoader={this.props.app_state.isLoading} gifs={data.data} />
+        <InfiniteScroller
+          isLoading={this.props.app_state.isLoading}
+          onScroll={this.handleScroll}
+          paginationData={data.pagination} />
       </div>
     )
   }
