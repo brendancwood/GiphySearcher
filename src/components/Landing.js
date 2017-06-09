@@ -29,6 +29,7 @@ class LandingContainer extends Component {
 
     this.props.actions.getNextPage(this.props.search.currentTerm, paginationData)
   }
+
   render() {
     const data = this.props.app_state.mode === APP_MODES.TRENDING ?
       this.props.trending.data : this.props.search[this.props.search.currentTerm]

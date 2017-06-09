@@ -10,3 +10,7 @@ export const UPLOAD_FAILED = 'UPLOAD_FAILED'
 export const UPLOAD_RESET = 'UPLOAD_RESET'
 
 export const RECEIVE_NEXT_PAGE = 'RECEIVE_NEXT_PAGE'
+
+
+export const SAME_SEARCH = 'SAME_SEARCH'
+export const DELETE_KEY = 'DELETE_KEY'

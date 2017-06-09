@@ -1,6 +1,8 @@
 import api, { PUBLIC_KEY } from '../utils/api'
 import * as types from './action_types'
 import axios from 'axios'
+import { SEARCH_LIMIT } from '../utils/constants'
+
 
 // SEARCHING
 const receiveSearch = (data) => {
@@ -17,8 +19,34 @@ const requestSearch = (term) => {
   }
 }
 
+
+const sameSearch = (term) => {
+  return {
+    type: types.SAME_SEARCH,
+    payload: term
+  }
+}
+
+function deleteKey() {
+  return {
+    type: types.DELETE_KEY
+  }
+}
+
+
 export function searchGiphy(term) {
-  return dispatch => {
+
+  return (dispatch, getState) => {
+    const store = getState()
+    if (store.search[term] != null) {
+      dispatch(sameSearch(term))
+      return
+    }
+
+    if (Object.keys(store.search).length > SEARCH_LIMIT) {
+      dispatch(deleteKey())
+    }
+
     dispatch(requestSearch(term))
     return api.instance.get(api.prepareUrl(api.urls.search, term)).then(response => {
       dispatch(receiveSearch(response.data))

@@ -9,3 +9,6 @@ export const UPLOAD_STATUS = {
   'SUCCESS': 'SUCCESS',
   'FAILED': 'FAILED'
 }
+
+
+export const SEARCH_LIMIT = 10
